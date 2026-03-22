@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Twitter } from "lucide-react";
+import { Twitter, Linkedin } from "lucide-react";
 import { SITE, TOOLS } from "@/lib/constants";
 
 export function Footer() {
@@ -237,33 +237,64 @@ export function Footer() {
                 gap: "10px",
               }}
             >
-              <li>
-                <a
-                  href="https://x.com/Axel1863670"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontSize: "14px",
-                    color: "var(--text-muted)",
-                    textDecoration: "none",
-                    transition: "color 150ms",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color =
-                      "var(--text-primary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color =
-                      "var(--text-muted)";
-                  }}
-                >
-                  <Twitter size={14} strokeWidth={1.5} />
-                  Twitter / X
-                </a>
-              </li>
+              {SITE.socialX && (
+                <li>
+                  <a
+                    href={SITE.socialX}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--text-muted)",
+                      textDecoration: "none",
+                      transition: "color 150ms",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-primary)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-muted)";
+                    }}
+                  >
+                    <Twitter size={14} strokeWidth={1.5} />
+                    Twitter / X
+                  </a>
+                </li>
+              )}
+              {SITE.socialLinkedIn && (
+                <li>
+                  <a
+                    href={SITE.socialLinkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--text-muted)",
+                      textDecoration: "none",
+                      transition: "color 150ms",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-primary)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color =
+                        "var(--text-muted)";
+                    }}
+                  >
+                    <Linkedin size={14} strokeWidth={1.5} />
+                    LinkedIn
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -351,6 +382,56 @@ export function Footer() {
           <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0 }}>
             © {currentYear} {SITE.name}. All rights reserved.
           </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            {SITE.socialX && (
+              <a
+                href={SITE.socialX}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter / X"
+                style={{
+                  color: "var(--text-muted)",
+                  transition: "color 150ms",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color =
+                    "var(--text-primary)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color =
+                    "var(--text-muted)";
+                }}
+              >
+                <Twitter size={16} strokeWidth={1.5} />
+              </a>
+            )}
+            {SITE.socialLinkedIn && (
+              <a
+                href={SITE.socialLinkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                style={{
+                  color: "var(--text-muted)",
+                  transition: "color 150ms",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color =
+                    "var(--text-primary)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color =
+                    "var(--text-muted)";
+                }}
+              >
+                <Linkedin size={16} strokeWidth={1.5} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </footer>
