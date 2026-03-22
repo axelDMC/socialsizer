@@ -8,6 +8,81 @@ import { FaqAccordion } from "@/components/seo/FaqAccordion"
 import { SITE, TOOLS } from "@/lib/constants"
 import Link from "next/link"
 
+function gcd(a: number, b: number): number {
+  return b === 0 ? a : gcd(b, a % b)
+}
+
+function formatRatio(w: number, h: number): string {
+  const d = gcd(w, h)
+  const rw = w / d
+  const rh = h / d
+  if (rw > 20 || rh > 20) {
+    return rh > rw
+      ? `${(h / w).toFixed(2)}:1`
+      : `${(w / h).toFixed(2)}:1`
+  }
+  return `${rw}:${rh}`
+}
+
+const SIZE_GUIDE = [
+  {
+    platform: "Instagram",
+    color: "#e1306c",
+    formats: [
+      { name: "Square Post",    w: 1080, h: 1080, bestFor: "Feed, grid consistency" },
+      { name: "Portrait Post",  w: 1080, h: 1350, bestFor: "Max feed real estate" },
+      { name: "Story / Reel",   w: 1080, h: 1920, bestFor: "Stories, Reels" },
+      { name: "Landscape Post", w: 1080, h: 566,  bestFor: "Wide / panoramic shots" },
+    ],
+  },
+  {
+    platform: "Twitter / X",
+    color: "#1d9bf0",
+    formats: [
+      { name: "Post Image",      w: 1200, h: 675, bestFor: "Tweet images" },
+      { name: "Header / Banner", w: 1500, h: 500, bestFor: "Profile header" },
+      { name: "Profile Photo",   w: 400,  h: 400, bestFor: "Profile picture" },
+    ],
+  },
+  {
+    platform: "LinkedIn",
+    color: "#0a66c2",
+    formats: [
+      { name: "Post Image",     w: 1200, h: 627, bestFor: "Feed posts" },
+      { name: "Cover Photo",    w: 1584, h: 396, bestFor: "Company page cover" },
+      { name: "Profile Banner", w: 1128, h: 191, bestFor: "Personal profile banner" },
+    ],
+  },
+  {
+    platform: "Facebook",
+    color: "#1877f2",
+    formats: [
+      { name: "Post Image",  w: 1200, h: 630,  bestFor: "Feed posts" },
+      { name: "Cover Photo", w: 851,  h: 315,  bestFor: "Page cover" },
+      { name: "Story",       w: 1080, h: 1920, bestFor: "Stories" },
+      { name: "Event Cover", w: 1920, h: 1005, bestFor: "Event pages" },
+    ],
+  },
+  {
+    platform: "YouTube",
+    color: "#ff0000",
+    formats: [
+      { name: "Thumbnail",       w: 1280, h: 720,  bestFor: "Video thumbnails" },
+      { name: "Channel Art",     w: 2560, h: 1440, bestFor: "Channel banner" },
+      { name: "Community Post",  w: 1080, h: 1080, bestFor: "Community tab" },
+    ],
+  },
+  {
+    platform: "Web / Other",
+    color: "#34d399",
+    formats: [
+      { name: "OG Image",      w: 1200, h: 630,  bestFor: "Link previews everywhere" },
+      { name: "Pinterest Pin", w: 1000, h: 1500, bestFor: "Pinterest posts" },
+      { name: "TikTok Cover",  w: 1080, h: 1920, bestFor: "TikTok video cover" },
+    ],
+  },
+]
+
 export const metadata: Metadata = {
   title: "Social Media Image Resizer — Resize Free | SocialSizer",
   description:
@@ -135,49 +210,90 @@ export default function ResizePage() {
           </ol>
 
           <h2>Social Media Image Size Guide (2026)</h2>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Platform</th>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Format</th>
-                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Width</th>
-                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Height</th>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Best For</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { p: "Instagram", n: "Square Post", w: 1080, h: 1080, b: "Feed, grid consistency" },
-                { p: "Instagram", n: "Portrait Post", w: 1080, h: 1350, b: "Max feed real estate" },
-                { p: "Instagram", n: "Story / Reel", w: 1080, h: 1920, b: "Stories, Reels" },
-                { p: "Instagram", n: "Landscape Post", w: 1080, h: 566, b: "Wide/panoramic shots" },
-                { p: "Twitter/X", n: "Post Image", w: 1200, h: 675, b: "Tweet images" },
-                { p: "Twitter/X", n: "Header / Banner", w: 1500, h: 500, b: "Profile header" },
-                { p: "Twitter/X", n: "Profile Photo", w: 400, h: 400, b: "Profile picture" },
-                { p: "LinkedIn", n: "Post Image", w: 1200, h: 627, b: "Feed posts" },
-                { p: "LinkedIn", n: "Cover Photo", w: 1584, h: 396, b: "Company page cover" },
-                { p: "LinkedIn", n: "Profile Banner", w: 1128, h: 191, b: "Personal profile banner" },
-                { p: "Facebook", n: "Post Image", w: 1200, h: 630, b: "Feed posts" },
-                { p: "Facebook", n: "Cover Photo", w: 851, h: 315, b: "Page cover" },
-                { p: "Facebook", n: "Story", w: 1080, h: 1920, b: "Stories" },
-                { p: "Facebook", n: "Event Cover", w: 1920, h: 1005, b: "Event pages" },
-                { p: "YouTube", n: "Thumbnail", w: 1280, h: 720, b: "Video thumbnails" },
-                { p: "YouTube", n: "Channel Art", w: 2560, h: 1440, b: "Channel banner" },
-                { p: "YouTube", n: "Community Post", w: 1080, h: 1080, b: "Community tab" },
-                { p: "Web", n: "OG Image", w: 1200, h: 630, b: "Link previews everywhere" },
-                { p: "Web", n: "Pinterest Pin", w: 1000, h: 1500, b: "Pinterest posts" },
-                { p: "Web", n: "TikTok Cover", w: 1080, h: 1920, b: "TikTok video cover" },
-              ].map((row, i) => (
-                <tr key={row.p + row.n} style={{ background: i % 2 === 0 ? "var(--border)" : "transparent" }}>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", borderBottom: "1px solid var(--border)" }}>{row.p}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-primary)", borderBottom: "1px solid var(--border)" }}>{row.n}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", textAlign: "right", borderBottom: "1px solid var(--border)" }}>{row.w}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", textAlign: "right", borderBottom: "1px solid var(--border)" }}>{row.h}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", borderBottom: "1px solid var(--border)" }}>{row.b}</td>
+          <div style={{
+            border: "1px solid var(--border)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            marginTop: "24px",
+            overflowX: "auto",
+          }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "520px" }}>
+              <thead>
+                <tr style={{ background: "var(--bg-tertiary)" }}>
+                  <th style={{ textAlign: "left", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", padding: "10px 16px 10px 40px", fontWeight: 600, whiteSpace: "nowrap" }}>Format</th>
+                  <th style={{ textAlign: "center", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", padding: "10px 16px", fontWeight: 600, whiteSpace: "nowrap" }}>Dimensions</th>
+                  <th style={{ textAlign: "center", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", padding: "10px 16px", fontWeight: 600, whiteSpace: "nowrap" }}>Ratio</th>
+                  <th style={{ textAlign: "left", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", padding: "10px 16px", fontWeight: 600, whiteSpace: "nowrap" }}>Best For</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {SIZE_GUIDE.flatMap(({ platform, color, formats }) => [
+                  <tr key={`hdr-${platform}`} style={{ background: "var(--bg-secondary)", borderTop: "1px solid var(--border)" }}>
+                    <td colSpan={4} style={{ padding: "8px 16px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <span style={{
+                          display: "inline-block",
+                          width: "8px", height: "8px",
+                          borderRadius: "50%",
+                          background: color,
+                          flexShrink: 0,
+                          boxShadow: `0 0 8px ${color}99`,
+                        }} />
+                        <span style={{
+                          fontSize: "12px",
+                          fontWeight: 700,
+                          color,
+                          letterSpacing: "0.03em",
+                        }}>{platform}</span>
+                      </div>
+                    </td>
+                  </tr>,
+                  ...formats.map((fmt, i) => (
+                    <tr
+                      key={`${platform}-${fmt.name}`}
+                      style={{
+                        background: i % 2 !== 0 ? "var(--bg-tertiary)" : "transparent",
+                        borderTop: "1px solid var(--border)",
+                      }}
+                    >
+                      <td style={{ padding: "11px 16px 11px 40px", fontSize: "14px", color: "var(--text-primary)", fontWeight: 500 }}>
+                        {fmt.name}
+                      </td>
+                      <td style={{ padding: "11px 16px", textAlign: "center" }}>
+                        <span style={{
+                          fontFamily: "var(--font-geist-mono, monospace)",
+                          fontSize: "12px",
+                          color: "var(--text-secondary)",
+                          background: "var(--bg-tertiary)",
+                          border: "1px solid var(--border)",
+                          borderRadius: "6px",
+                          padding: "3px 8px",
+                          whiteSpace: "nowrap",
+                          display: "inline-block",
+                        }}>
+                          {fmt.w} × {fmt.h}
+                        </span>
+                      </td>
+                      <td style={{ padding: "11px 16px", textAlign: "center" }}>
+                        <span style={{
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "var(--text-muted)",
+                          fontVariantNumeric: "tabular-nums",
+                          whiteSpace: "nowrap",
+                        }}>
+                          {formatRatio(fmt.w, fmt.h)}
+                        </span>
+                      </td>
+                      <td style={{ padding: "11px 16px", fontSize: "13px", color: "var(--text-muted)" }}>
+                        {fmt.bestFor}
+                      </td>
+                    </tr>
+                  )),
+                ])}
+              </tbody>
+            </table>
+          </div>
 
           <h2>Frequently Asked Questions</h2>
           <FaqAccordion items={faqItems} />
