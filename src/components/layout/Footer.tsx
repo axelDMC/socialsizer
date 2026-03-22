@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Twitter } from "lucide-react";
 import { SITE, TOOLS } from "@/lib/constants";
 
 export function Footer() {
@@ -208,6 +209,60 @@ export function Footer() {
                 >
                   Terms of Service
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4
+              style={{
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "var(--text-primary)",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                marginBottom: "16px",
+              }}
+            >
+              Social
+            </h4>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <li>
+                <a
+                  href="https://x.com/Axel1863670"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "14px",
+                    color: "var(--text-muted)",
+                    textDecoration: "none",
+                    transition: "color 150ms",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.color =
+                      "var(--text-primary)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.color =
+                      "var(--text-muted)";
+                  }}
+                >
+                  <Twitter size={14} strokeWidth={1.5} />
+                  Twitter / X
+                </a>
               </li>
             </ul>
           </div>
