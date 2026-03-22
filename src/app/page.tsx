@@ -49,7 +49,7 @@ export default function HomePage() {
             Free tools, no signup required
           </div>
 
-          <h1 style={{ marginBottom: "20px" }}>Your Freelance Tax Deduction Checklist</h1>
+          <h1 style={{ marginBottom: "20px" }}>[HEADLINE]</h1>
 
           <p
             style={{
@@ -60,7 +60,7 @@ export default function HomePage() {
               lineHeight: 1.7,
             }}
           >
-            Answer 6 quick questions and get a personalized IRS deduction checklist with form numbers and savings estimates. Free, instant, no signup.
+            [SUBTITLE]
           </p>
 
           {TOOLS.length > 0 && (

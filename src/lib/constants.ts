@@ -1,8 +1,10 @@
+// TODO: Replace all placeholder values before deploying
 export const SITE = {
-  name: "FreelanceTaxChecklist",
-  url: "https://freelance-tax-checklist.adcmartinez1.workers.dev",
-  description: "Free freelance tax deduction checklist generator. Select your profession, answer 6 questions, and get a personalized IRS deduction list with form numbers and savings estimates.",
-  tagline: "Your personalized freelance tax deduction checklist",
+  name: "[PROJECT_NAME]",
+  // Must be a valid URL. Replace with your actual domain before deploying.
+  url: "https://example.com",
+  description: "[PROJECT_DESCRIPTION]",
+  tagline: "[PROJECT_TAGLINE]",
 } as const;
 
 export interface Tool {
@@ -12,11 +14,4 @@ export interface Tool {
   icon: string;
 }
 
-export const TOOLS: Tool[] = [
-  {
-    name: "Tax Deduction Checklist",
-    slug: "tax-deduction-checklist",
-    description: "Get a personalized IRS tax deduction checklist based on your freelance profession and situation.",
-    icon: "ClipboardList",
-  },
-];
+export const TOOLS: Tool[] = [];
