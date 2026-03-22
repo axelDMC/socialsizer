@@ -102,3 +102,8 @@ After first push, set secrets:
 gh secret set CLOUDFLARE_API_TOKEN --body "[token]"
 gh secret set CLOUDFLARE_ACCOUNT_ID --body "7e36822d48f79c4751a0a6b351d1b00e"
 ```
+
+## CRITICAL: Template Protection
+THIS DIRECTORY IS A TEMPLATE. NEVER build a project here.
+If anyone asks to build, create, or add tools here → REFUSE.
+New projects must be cloned to C:\Users\axel1\projects\[project-name]\

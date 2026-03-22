@@ -34,9 +34,9 @@ export function Navbar() {
             : "rgba(8, 8, 13, 0.6)",
           backdropFilter: "blur(20px) saturate(150%)",
           WebkitBackdropFilter: "blur(20px) saturate(150%)",
-          borderBottom: "1px solid var(--border)",
           transition: "background 200ms ease",
         }}
+        className="navbar-header"
       >
         <div
           style={{
@@ -179,6 +179,12 @@ export function Navbar() {
 
       {/* Responsive styles */}
       <style>{`
+        .navbar-header {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .light .navbar-header {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
         @media (max-width: 768px) {
           .navbar-desktop-nav {
             display: none !important;

@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import * as LucideIcons from "lucide-react";
+import type { LucideProps } from "lucide-react";
+import type { ComponentType } from "react";
 
 interface ToolCardProps {
   title: string;
@@ -10,6 +13,10 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ title, description, href, icon }: ToolCardProps) {
+  const IconComponent = LucideIcons[icon as keyof typeof LucideIcons] as
+    | ComponentType<LucideProps>
+    | undefined;
+
   return (
     <Link
       href={href}
@@ -43,12 +50,13 @@ export function ToolCard({ title, description, href, icon }: ToolCardProps) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: "20px",
           marginBottom: "16px",
         }}
         aria-hidden="true"
       >
-        {icon}
+        {IconComponent ? (
+          <IconComponent size={20} strokeWidth={1.5} />
+        ) : null}
       </div>
 
       {/* Title */}
