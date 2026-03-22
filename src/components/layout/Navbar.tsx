@@ -29,14 +29,11 @@ export function Navbar() {
           height: "64px",
           display: "flex",
           alignItems: "center",
-          background: scrolled
-            ? "rgba(8, 8, 13, 0.85)"
-            : "rgba(8, 8, 13, 0.6)",
           backdropFilter: "blur(20px) saturate(150%)",
           WebkitBackdropFilter: "blur(20px) saturate(150%)",
           transition: "background 200ms ease",
         }}
-        className="navbar-header"
+	className={`navbar-header${scrolled ? " scrolled" : ""}`}
       >
         <div
           style={{
@@ -96,7 +93,7 @@ export function Navbar() {
             {navTools.map((tool) => (
               <Link
                 key={tool.slug}
-                href={tool.slug}
+                href={`/${tool.slug}`}
                 style={{
                   padding: "6px 12px",
                   borderRadius: "8px",
@@ -180,10 +177,18 @@ export function Navbar() {
       {/* Responsive styles */}
       <style>{`
         .navbar-header {
+          background: rgba(8, 8, 13, 0.6);
           border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
+        .navbar-header.scrolled {
+          background: rgba(8, 8, 13, 0.85);
+        }
         .light .navbar-header {
+          background: rgba(250, 250, 250, 0.6);
           border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .light .navbar-header.scrolled {
+          background: rgba(250, 250, 250, 0.85);
         }
         @media (max-width: 768px) {
           .navbar-desktop-nav {
