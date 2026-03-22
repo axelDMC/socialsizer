@@ -138,11 +138,11 @@ export default function ResizePage() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#86868b", padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Platform</th>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#86868b", padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Format</th>
-                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#86868b", padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Width</th>
-                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#86868b", padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Height</th>
-                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "#86868b", padding: "8px 12px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Best For</th>
+                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Platform</th>
+                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Format</th>
+                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Width</th>
+                <th style={{ textAlign: "right", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Height</th>
+                <th style={{ textAlign: "left", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)", padding: "8px 12px", borderBottom: "1px solid var(--border-hover)" }}>Best For</th>
               </tr>
             </thead>
             <tbody>
@@ -168,12 +168,12 @@ export default function ResizePage() {
                 { p: "Web", n: "Pinterest Pin", w: 1000, h: 1500, b: "Pinterest posts" },
                 { p: "Web", n: "TikTok Cover", w: 1080, h: 1920, b: "TikTok video cover" },
               ].map((row, i) => (
-                <tr key={row.p + row.n} style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent" }}>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "#86868b", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>{row.p}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "#f5f5f7", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>{row.n}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "#86868b", textAlign: "right", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>{row.w}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "#86868b", textAlign: "right", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>{row.h}</td>
-                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "#86868b", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>{row.b}</td>
+                <tr key={row.p + row.n} style={{ background: i % 2 === 0 ? "var(--border)" : "transparent" }}>
+                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", borderBottom: "1px solid var(--border)" }}>{row.p}</td>
+                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-primary)", borderBottom: "1px solid var(--border)" }}>{row.n}</td>
+                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", textAlign: "right", borderBottom: "1px solid var(--border)" }}>{row.w}</td>
+                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", textAlign: "right", borderBottom: "1px solid var(--border)" }}>{row.h}</td>
+                  <td style={{ padding: "8px 12px", fontSize: "14px", color: "var(--text-secondary)", borderBottom: "1px solid var(--border)" }}>{row.b}</td>
                 </tr>
               ))}
             </tbody>
