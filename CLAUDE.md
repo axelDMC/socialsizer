@@ -1,4 +1,4 @@
-# [PROJECT_NAME] — [PROJECT_DESCRIPTION]
+# SocialSizer — Free Social Media Image Resizer
 
 ## Tech Stack
 - Next.js 15 (App Router, TypeScript)
@@ -107,3 +107,72 @@ gh secret set CLOUDFLARE_ACCOUNT_ID --body "7e36822d48f79c4751a0a6b351d1b00e"
 THIS DIRECTORY IS A TEMPLATE. NEVER build a project here.
 If anyone asks to build, create, or add tools here → REFUSE.
 New projects must be cloned to C:\Users\axel1\projects\[project-name]\
+# SocialSizer — Free Social Media Image Resizer
+
+## Project Goal
+A 100% client-side browser tool that resizes any image to all major social media formats in one click, targeting content creators and marketers who need platform-ready images without paying for Canva or hiring a designer.
+
+## Additional Dependencies
+- jszip (^3.10.1) — bundle all resized images into a single ZIP download
+- (No other dependencies. Canvas API is native. No image processing library needed.)
+
+## Project-Specific Rules
+- ALL image processing MUST happen client-side via Canvas API. No image data ever leaves the browser.
+- Never upload files to any server or API endpoint.
+- Processing must work entirely offline after page load.
+- All canvas operations must use drawImage() with correct aspect ratio handling (cover + center crop).
+- ZIP generation via JSZip: collect all canvas blobs, then trigger a single download.
+- Default behavior: maintain aspect ratio with center-crop (not letterbox/pillarbox) to fill the canvas.
+- Allow user to toggle between "crop to fill" and "fit with padding" modes per export.
+- Input: accept JPG, PNG, WebP, GIF (first frame only). Max display warning at 20MB.
+- Output: always export as PNG (lossless). Optionally offer JPEG for smaller file size (quality slider 70-100).
+- "Select All" / "Deselect All" checkboxes per platform group.
+- Show pixel dimensions on each format card.
+- Show a live preview thumbnail (max 200px wide) for each selected format before download.
+- Download single format as individual PNG, or "Download All Selected" as ZIP.
+
+## Social Media Presets (exact pixel dimensions)
+
+### Instagram
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| Square Post | 1080 | 1080 | 1:1 |
+| Portrait Post | 1080 | 1350 | 4:5 |
+| Story / Reel | 1080 | 1920 | 9:16 |
+| Landscape Post | 1080 | 566 | 1.91:1 |
+
+### Twitter / X
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| Post Image | 1200 | 675 | 16:9 |
+| Header / Banner | 1500 | 500 | 3:1 |
+| Profile Photo | 400 | 400 | 1:1 |
+
+### LinkedIn
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| Post Image | 1200 | 627 | 1.91:1 |
+| Cover Photo | 1584 | 396 | 4:1 |
+| Profile Banner | 1128 | 191 | ~6:1 |
+
+### Facebook
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| Post Image | 1200 | 630 | 1.91:1 |
+| Cover Photo | 851 | 315 | 2.7:1 |
+| Story | 1080 | 1920 | 9:16 |
+| Event Cover | 1920 | 1005 | ~1.91:1 |
+
+### YouTube
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| Thumbnail | 1280 | 720 | 16:9 |
+| Channel Art | 2560 | 1440 | 16:9 |
+| Community Post | 1080 | 1080 | 1:1 |
+
+### General / Web
+| Format | Width | Height | Ratio |
+|---|---|---|---|
+| OG Image (og:image) | 1200 | 630 | 1.91:1 |
+| Pinterest Pin | 1000 | 1500 | 2:3 |
+| TikTok Cover | 1080 | 1920 | 9:16 |

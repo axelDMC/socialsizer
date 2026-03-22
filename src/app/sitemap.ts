@@ -1,40 +1,44 @@
 import type { MetadataRoute } from "next";
-import { SITE, TOOLS } from "@/lib/constants";
+
+const siteUrl = "https://socialsizer.adcmartinez1.workers.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
+  return [
     {
-      url: SITE.url,
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: `${SITE.url}/about`,
+      url: `${siteUrl}/resize`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/og-image`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITE.url}/privacy`,
+      url: `${siteUrl}/privacy`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.1,
     },
     {
-      url: `${SITE.url}/terms`,
+      url: `${siteUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.1,
     },
   ];
-
-  const toolPages: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
-    url: `${SITE.url}/${tool.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...toolPages];
 }

@@ -1,9 +1,9 @@
 export const SITE = {
-  name: "FreelanceTaxChecklist",
-  url: "https://freelance-tax-checklist.adcmartinez1.workers.dev",
-  description: "Free freelance tax deduction checklist generator. Select your profession, answer 6 questions, and get a personalized IRS deduction list with form numbers and savings estimates.",
-  tagline: "Your personalized freelance tax deduction checklist",
-} as const;
+  name: "SocialSizer",
+  url: "https://socialsizer.adcmartinez1.workers.dev",
+  description: "Free browser-based tool to resize any image for Instagram, Twitter, LinkedIn, Facebook, YouTube and more. No upload. 100% private.",
+  tagline: "Resize once. Post everywhere.",
+}
 
 export interface Tool {
   name: string;
@@ -14,9 +14,15 @@ export interface Tool {
 
 export const TOOLS: Tool[] = [
   {
-    name: "Tax Deduction Checklist",
-    slug: "tax-deduction-checklist",
-    description: "Get a personalized IRS tax deduction checklist based on your freelance profession and situation.",
-    icon: "ClipboardList",
+    name: "Social Media Image Resizer",
+    slug: "/resize",
+    description: "Resize any image to all major social media formats instantly. Download individually or as a ZIP.",
+    icon: "ImageDown",
   },
-];
+  {
+    name: "OG Image Resizer",
+    slug: "/og-image",
+    description: "Resize your image to the perfect 1200x630 Open Graph size for link previews on any platform.",
+    icon: "Globe",
+  },
+]

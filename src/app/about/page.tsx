@@ -62,7 +62,10 @@ export default function AboutPage() {
               marginBottom: "24px",
             }}
           >
-            [PROJECT_ABOUT_PARAGRAPH_2]
+            We built {SITE.name} because resizing images for social media shouldn&apos;t
+            require paying for Canva, learning Photoshop, or uploading your content
+            to third-party services. Every creator, marketer, and small business owner
+            deserves free, simple tools that respect their privacy.
           </p>
           <p
             style={{
@@ -71,7 +74,10 @@ export default function AboutPage() {
               marginBottom: "48px",
             }}
           >
-            [PROJECT_ABOUT_PARAGRAPH_3]
+            Our tools are 100% client-side. Your images never touch our servers — they
+            never even leave your browser. No tracking, no analytics, no selling your
+            data. Just open, use, and go. If you like what we&apos;ve built, share it.
+            If you have ideas for new tools, contact us on GitHub.
           </p>
 
           {/* Privacy section */}

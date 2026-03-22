@@ -96,7 +96,7 @@ export function Navbar() {
             {navTools.map((tool) => (
               <Link
                 key={tool.slug}
-                href={`/${tool.slug}`}
+                href={tool.slug}
                 style={{
                   padding: "6px 12px",
                   borderRadius: "8px",

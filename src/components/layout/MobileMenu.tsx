@@ -101,7 +101,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {TOOLS.map((tool) => (
             <Link
               key={tool.slug}
-              href={`/${tool.slug}`}
+              href={tool.slug}
               onClick={onClose}
               style={{
                 display: "block",

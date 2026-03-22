@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Zap, Shield, Heart } from "lucide-react";
+import { Lock, Zap, ImageDown } from "lucide-react";
 import { SITE, TOOLS } from "@/lib/constants";
 import { ToolCard } from "@/components/ui/ToolCard";
 
@@ -49,7 +49,7 @@ export default function HomePage() {
             Free tools, no signup required
           </div>
 
-          <h1 style={{ marginBottom: "20px" }}>Your Freelance Tax Deduction Checklist</h1>
+          <h1 style={{ marginBottom: "20px" }}>Resize Once. Post Everywhere.</h1>
 
           <p
             style={{
@@ -60,12 +60,12 @@ export default function HomePage() {
               lineHeight: 1.7,
             }}
           >
-            Answer 6 quick questions and get a personalized IRS deduction checklist with form numbers and savings estimates. Free, instant, no signup.
+            The free, private social media image resizer. Every platform. Every format. No upload required.
           </p>
 
           {TOOLS.length > 0 && (
             <a
-              href={`/${TOOLS[0].slug}`}
+              href={TOOLS[0].slug}
               className="hero-cta-btn"
               style={{
                 display: "inline-flex",
@@ -80,7 +80,7 @@ export default function HomePage() {
                 textDecoration: "none",
               }}
             >
-              Get started free →
+              Resize your image free →
             </a>
           )}
         </div>
@@ -104,46 +104,13 @@ export default function HomePage() {
                     key={tool.slug}
                     title={tool.name}
                     description={tool.description}
-                    href={`/${tool.slug}`}
+                    href={tool.slug}
                     icon={tool.icon}
                   />
                 ))}
               </div>
             </>
-          ) : (
-            <div
-              style={{
-                background: "var(--bg-secondary)",
-                border: "1px solid var(--border)",
-                borderRadius: "16px",
-                padding: "48px 32px",
-                textAlign: "center",
-              }}
-            >
-              <div style={{ fontSize: "48px", marginBottom: "16px" }}>🛠️</div>
-              <h3 style={{ marginBottom: "8px" }}>Tools coming soon</h3>
-              <p
-                style={{
-                  color: "var(--text-secondary)",
-                  maxWidth: "400px",
-                  margin: "0 auto",
-                }}
-              >
-                This template is ready for your tools. Add entries to the TOOLS
-                array in{" "}
-                <code
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    background: "var(--bg-tertiary)",
-                    padding: "2px 6px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  src/lib/constants.ts
-                </code>
-              </p>
-            </div>
-          )}
+          ) : null}
         </div>
       </section>
 
@@ -179,19 +146,19 @@ export default function HomePage() {
           >
             {[
               {
+                icon: Lock,
+                title: "100% Private",
+                desc: "Your images never leave your browser. All processing happens locally via Canvas API.",
+              },
+              {
                 icon: Zap,
-                title: "Fast",
-                desc: "Instant results. No waiting, no loading screens. Everything runs in your browser.",
+                title: "One Click, All Formats",
+                desc: "Export to 20+ platform formats at once. Download individually or as a single ZIP archive.",
               },
               {
-                icon: Shield,
-                title: "Private",
-                desc: "Your data stays in your browser. We never store, process, or transmit your files.",
-              },
-              {
-                icon: Heart,
-                title: "Free",
-                desc: "No signup, no limits, no credit card. Every tool is completely free forever.",
+                icon: ImageDown,
+                title: "No Account Needed",
+                desc: "No sign-up, no watermark, no limits. Free forever, supported by non-intrusive ads.",
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div
@@ -239,7 +206,7 @@ export default function HomePage() {
         <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 24px" }}>
           <h2 style={{ marginBottom: "12px" }}>How It Works</h2>
           <p style={{ color: "var(--text-secondary)", marginBottom: "40px" }}>
-            Three steps to get what you need.
+            Three steps to get every format you need.
           </p>
 
           <div
@@ -252,18 +219,18 @@ export default function HomePage() {
             {[
               {
                 num: "1",
-                title: "Choose a tool",
-                desc: "Pick the tool that fits your task from our growing collection.",
+                title: "Upload your image",
+                desc: "Drag and drop or click to upload any JPG, PNG, or WebP file from your device.",
               },
               {
                 num: "2",
-                title: "Enter your data",
-                desc: "Paste text, upload a file, or type in what you need to process.",
+                title: "Select your formats",
+                desc: "Pick the platforms and formats you need, or click Select All for everything at once.",
               },
               {
                 num: "3",
-                title: "Get results",
-                desc: "Results appear instantly. Copy, download, or share in one click.",
+                title: "Download as ZIP",
+                desc: "Click Download All to get every resized image in a single ZIP. No account needed.",
               },
             ].map(({ num, title, desc }) => (
               <div
