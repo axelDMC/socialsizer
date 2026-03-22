@@ -80,3 +80,25 @@
 - NEVER add [build] section to wrangler.toml (Pages handles build from dashboard)
 - NEVER add pages_build_output_dir (not needed with dashboard deploy)
 - NEVER use "export const runtime = 'edge'" in API routes (Cloudflare already runs everything at the edge)
+
+## Cloudflare Deploy Rules (CRITICAL)
+- Deploy method: GitHub Actions → Cloudflare Workers (NOT Cloudflare Pages)
+- wrangler.toml: ONLY name, compatibility_date, compatibility_flags, main, [assets]
+- NEVER add [build] section to wrangler.toml
+- NEVER add pages_build_output_dir to wrangler.toml
+- NEVER use `export const runtime = 'edge'` in API routes (Cloudflare already runs at edge)
+- NEVER install Next.js 16+ (OpenNext only supports 15.x)
+- NEVER create pnpm-workspace.yaml (not a monorepo)
+- open-next.config.ts must have ALL required fields including proxyExternalRequest and edgeExternals
+- next.config.ts must have eslint.ignoreDuringBuilds = true
+- Every file that uses next/link MUST have "use client" at the top
+- Every file that uses useState, useEffect, onClick, onChange MUST have "use client"
+- package.json MUST have "packageManager": "pnpm@9.15.0"
+- Deploy URL pattern: [name].adcmartinez1.workers.dev (NOT .pages.dev)
+
+## GitHub Actions Deploy (every new project)
+After first push, set secrets:
+```bash
+gh secret set CLOUDFLARE_API_TOKEN --body "[token]"
+gh secret set CLOUDFLARE_ACCOUNT_ID --body "7e36822d48f79c4751a0a6b351d1b00e"
+```
