@@ -3,6 +3,8 @@ export const SITE = {
   url: "https://socialsizer.adcmartinez1.workers.dev",
   description: "Free browser-based tool to resize any image for Instagram, Twitter, LinkedIn, Facebook, YouTube and more. No upload. 100% private.",
   tagline: "Resize once. Post everywhere.",
+  socialX: "https://x.com/Axel1863670",
+  socialLinkedIn: "https://linkedin.com/in/axeldmc",
 }
 
 export interface Tool {
