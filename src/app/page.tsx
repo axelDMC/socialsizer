@@ -104,7 +104,7 @@ export default function HomePage() {
                     key={tool.slug}
                     title={tool.name}
                     description={tool.description}
-                    href={tool.slug}
+                    href={`/${tool.slug}`}
                     icon={tool.icon}
                   />
                 ))}

@@ -17,13 +17,13 @@ export interface Tool {
 export const TOOLS: Tool[] = [
   {
     name: "Social Media Image Resizer",
-    slug: "/resize",
+    slug: "resize",
     description: "Resize any image to all major social media formats instantly. Download individually or as a ZIP.",
     icon: "ImageDown",
   },
   {
     name: "OG Image Resizer",
-    slug: "/og-image",
+    slug: "og-image",
     description: "Resize your image to the perfect 1200x630 Open Graph size for link previews on any platform.",
     icon: "Globe",
   },
