@@ -49,7 +49,7 @@ export default function HomePage() {
             Free tools, no signup required
           </div>
 
-          <h1 style={{ marginBottom: "20px" }}>[HEADLINE]</h1>
+          <h1 style={{ marginBottom: "20px" }}>Your Freelance Tax Deduction Checklist</h1>
 
           <p
             style={{
@@ -60,12 +60,13 @@ export default function HomePage() {
               lineHeight: 1.7,
             }}
           >
-            [SUBTITLE]
+            Answer 6 quick questions and get a personalized IRS deduction checklist with form numbers and savings estimates. Free, instant, no signup.
           </p>
 
           {TOOLS.length > 0 && (
             <a
               href={`/${TOOLS[0].slug}`}
+              className="hero-cta-btn"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -77,18 +78,6 @@ export default function HomePage() {
                 fontWeight: 600,
                 fontSize: "15px",
                 textDecoration: "none",
-                transition: "all 200ms ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.filter =
-                  "brightness(1.1)";
-                (e.currentTarget as HTMLElement).style.transform =
-                  "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.filter = "brightness(1)";
-                (e.currentTarget as HTMLElement).style.transform =
-                  "translateY(0)";
               }}
             >
               Get started free →

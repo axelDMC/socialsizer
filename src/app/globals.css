@@ -179,3 +179,12 @@ h3 {
   background: var(--accent-muted);
   color: var(--accent);
 }
+
+/* Hero CTA button */
+.hero-cta-btn {
+  transition: filter 200ms ease, transform 200ms ease;
+}
+.hero-cta-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
